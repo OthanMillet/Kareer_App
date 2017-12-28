@@ -1,0 +1,303 @@
+<div class="page" data-page="account">
+    <div class="page-content infinite-scroll" style="white-space: normal;">
+        <div class="card-header-pic">
+            <div class="card-header">
+                <a href="#" data-load="index" class="btn btn-floating btn-flat white waves-effect waves-teal waves-light back color-gray"><i class="icon f7-icons">arrow_left</i></a>Account
+            </div>
+            <div class="content-block" id="display_accountInfo" style="padding: 0; margin: auto !important;">
+               <ul>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row show" id="display_givenName">
+                           <div class="col s10"><small>Given Name: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='GivenName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                          </div>
+                       </div>
+                       <div class="row hidden edit" id="edit_givenName">
+                        <form action="" method="POST" id='form_givenName' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" required="true" maxlength="30" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_middleName">
+                           <div class="col s10"><small>Middle Name: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='MiddleName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                          </div>
+                       </div>
+                       <div class="row hidden" id="edit_middleName">
+                        <form action="" method="POST" id='form_middleName' style="width: 100%">
+                          <label class="col s12 a active" for="field_MiddleName">Middle Name</label>
+                          <input type="text" id="field_MiddleName" value='' name="field_MiddleName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_lastName">
+                           <div class="col s10"><small>Last Name: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='LastName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a></div>
+                       </div>
+                       <div class="row hidden" id="edit_lastName">
+                        <form action="" method="POST" id='form_lastName' style="width: 100%">
+                          <label class="col s12 a active" for="field_LastName">Last Name</label>
+                          <input type="text" id="field_LastName" value='' name="field_LastName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_gender">
+                           <div class="col s10"><small>Gender: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Gender' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit_Gender">
+                        <form action="" method="POST" id='form_Gender' style="width: 100%">
+                          <label class="col s12 a active" for="field_Gender">Gender</label>
+                          <select id='field_Gender' name='field_Gender}'>
+                              <option value ='Male'>Male</option>
+                              <option value ='Female'>Female</option>
+                          </select>
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_age">
+                           <div class="col s10"><small>Age: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Age' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_dateOfBirth">
+                           <div class="col s10"><small>Date of Birth: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='DateOfBirth' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_placeOfBirth">
+                           <div class="col s10"><small>Place of Birth: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='PlaceOfBirth' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_address">
+                           <div class="col s10"><small>Permanent Address: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='PermanentAddress' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_citizenship">
+                           <div class="col s10"><small>Citizenship: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Citizenship' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_height">
+                           <div class="col s10"><small>Height: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Height' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_weight">
+                           <div class="col s10"><small>Weight: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Weight' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row" id="display_mother">
+                           <div class="col s10"><small>Mother's Name: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='MotherName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_father">
+                           <div class="col s10"><small>Father's Name: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='FatherName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_language">
+                           <div class="col s10"><small>Language: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Language' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_religion">
+                           <div class="col s10"><small>Religion: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Religion' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_mother_occupation">
+                           <div class="col s10"><small>Mother's Occupation: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Mother_Occupation' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_father_occupation">
+                           <div class="col s10"><small>Father's Occupation: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Father_Occupation' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
+                       <div class="item-inner row"  id="display_skills">
+                           <div class="col s10"><small>Skills: </small><strong></strong></div>
+                           <div class="col s2">
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Skills' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                         </div>
+                       </div>
+                       <div class="row hidden" id="edit">
+                        <form action="" method="POST" id='form_edit' style="width: 100%">
+                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
+                        </form>
+                       </div>
+                   </li>
+               </ul> 
+            </div>     
+        </div>  
+    </div>
+</div>
