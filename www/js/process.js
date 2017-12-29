@@ -123,8 +123,8 @@ Framework7.prototype.plugins.kareer = function (app, params) {
     	ini:function(){
 	        $("#form_logIn").validate({
 	            rules: {
-	                field_email: {required: true,email:true,maxlength:100},
-	                field_password: {required: true},
+	                field_emailLogin: {required: true,email:true,maxlength:100},
+	                field_passwordLogin: {required: true},
 	            },
 	            errorElement : 'div',
 	            errorPlacement: function(error, element) {
@@ -137,13 +137,13 @@ Framework7.prototype.plugins.kareer = function (app, params) {
 	                }
 	            },
 	            messages: {
-	                field_email: {
+	                field_emailLogin: {
 	                    required: "<i data-error ='Field is required' class='icon f7-icons  color red' style='margin:5px;'>info</i>",
 	                    maxlength: "<i data-error ='Name is too long' class='icon f7-icons color red' style='margin:5px;'>info</i>",
 	                    email: "<i data-error ='Email is invalid' class='icon f7-icons color red' style='margin:5px;'>info</i>",
 	                    validateEmail: "<i data-error ='Email already in use.' class='icon f7-icons color red' style='margin:5px;'>info</i>",
 	                },
-	                field_password: {
+	                field_passwordLogin: {
 	                    required: "<i data-error ='Field is required' class='icon f7-icons color red' style='margin:5px;'>info</i>",
 	                    maxlength: "<i data-error ='Name is too long' class='icon f7-icons color red' style='margin:5px;'>info</i>",
 	                    checkPassword: "<i data-error ='Password is weak' class='icon f7-icons color red' style='margin:5px;'>info</i>",
@@ -168,6 +168,18 @@ Framework7.prototype.plugins.kareer = function (app, params) {
 	                })
 	            }
 	        }); 
+            $$("a[data-cmd='showPasswordLOG']").on('click',function(){
+                $("#passwordLOG input").attr({"type":"text"});
+                $("a.x").addClass('hidden');
+                $("a.y").removeClass('hidden');
+
+            }); 
+            $$("a[data-cmd='hidePasswordLoG']").on('click',function(){
+                $("#passwordLOG input").attr({"type":"password"});
+                $("a.y").addClass('hidden');
+                $("a.x").removeClass('hidden');
+
+            });
 	        $$(".log-error-icon").on('click',function(){
 	            var data= $(this).find('i');
 	            system.notification("Kareer",data[0].dataset.error,false,3000,true,false,false);
@@ -188,8 +200,8 @@ Framework7.prototype.plugins.kareer = function (app, params) {
                 rules: {
                     field_firstname: {required: true, maxlength:50},
                     field_lastname: {required: true, maxlength:50},
-                    field_email: {required: true, maxlength: 100,email:true,validateEmail:true},
-                    field_password: {required: true, maxlength: 50,checkPassword:true},
+                    field_emailSignUp: {required: true, maxlength: 100,email:true,validateEmail:true},
+                    field_passwordSignUp: {required: true, maxlength: 50,checkPassword:true},
                 },
                 errorElement : 'div',
                 errorPlacement: function(error, element) { 
@@ -210,13 +222,13 @@ Framework7.prototype.plugins.kareer = function (app, params) {
                         required: "<i data-error ='Field is required' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                         maxlength: "<i data-error ='Name is too long' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                     },
-                    field_email: {
+                    field_emailSignUp: {
                         required: "<i data-error ='Field is required' class='icon f7-icons  color red' style='margin:5px;'>info</i>",
                         maxlength: "<i data-error ='Name is too long' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                         email: "<i data-error ='Email is invalid' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                         validateEmail: "<i data-error ='Email already in use.' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                     },
-                    field_password: {
+                    field_passwordSignUp: {
                         required: "<i data-error ='Field is required' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                         maxlength: "<i data-error ='Name is too long' class='icon f7-icons color red' style='margin:5px;'>info</i>",
                         checkPassword: "<i data-error ='Password is weak' class='icon f7-icons color red' style='margin:5px;'>info</i>",
@@ -226,6 +238,7 @@ Framework7.prototype.plugins.kareer = function (app, params) {
                     var _form = $(form).serializeArray();
                     var data = system.ajax(processor+'do-signUp',_form);
                     data.done(function(data){
+                        console.log(data);
                         if(data == 1){
                         	$$("input").val("");
                             system.notification("Kareer","Success. You can now Sign In to your account. ",false,2000,true,false,function(){
@@ -241,6 +254,18 @@ Framework7.prototype.plugins.kareer = function (app, params) {
                         }
                     })
                 }
+            });
+            $$("a[data-cmd='showPasswordSIGN']").on('click',function(){
+                $("#passwordSIGN input").attr({"type":"text"});
+                $("a.x").addClass('hidden');
+                $("a.y").removeClass('hidden');
+
+            }); 
+            $$("a[data-cmd='hidePasswordSIGN']").on('click',function(){
+                $("#passwordSIGN input").attr({"type":"password"});
+                $("a.y").addClass('hidden');
+                $("a.x").removeClass('hidden');
+
             });
             $$(".error-icon").on('click',function(){
                 var data= $(this).find('i');

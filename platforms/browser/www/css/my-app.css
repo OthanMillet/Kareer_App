@@ -9,7 +9,14 @@ div[class*="col1-"] {
 }
 .row {
     margin-bottom: 2px;
+
 }
+.rows {
+    margin-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 30px;
+}
+
 
 /* label color */
 #splashScreen a.button {
@@ -155,4 +162,172 @@ body {
 
 #jobs .swiper-wrapper, .swiper-slide, {
     width:100% !important;
+}
+
+#form_academic .select-dropdown{
+  text-align: center;
+  background: white;
+  position: inherit !important;
+}
+
+#form_academic .dropdown-content li>span {
+  color: #000000 !important;
+}
+
+#form_skills .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+
+#form_skills .dropdown-content li>span {
+  color: #000000 !important;
+}
+
+#form_skills .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+}
+
+#form_language .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+
+#form_language .dropdown-content li>span {
+  color: #000000 !important;
+}
+
+#form_language .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+}
+#form_career .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+
+#form_career .dropdown-content li>span {
+  color: #000000 !important;
+}
+
+#form_career .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+}
+#form_edit .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+
+#form_edit .dropdown-content li>span {
+  color: #000000 !important;
+}
+
+#form_edit .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+}
+#edit_Gender .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+#edit_Gender .select-wrapper{
+  width: 77% !important;
+}
+#edit_Gender .dropdown-content li>span {
+  color: #000000 !important;
+}
+#edit_Gender .select-wrapper input.select-dropdown{
+  height: 16px !important;
+}
+#edit_Gender .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+        display: none;
+}
+#edit_language .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+#edit_language .select-wrapper{
+  width: 77% !important;
+}
+#edit_language .dropdown-content li>span {
+  color: #000000 !important;
+}
+#edit_language .select-wrapper input.select-dropdown{
+  height: 16px !important;
+}
+#edit_language .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+        display: none;
+}
+#edit_skills .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+#edit_skills .select-wrapper{
+  width: 77% !important;
+}
+#edit_skills .dropdown-content li>span {
+  color: #000000 !important;
+}
+#edit_skills .select-wrapper input.select-dropdown{
+  height: 16px !important;
+}
+#edit_skills .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+        display: none;
+}
+#form_gov .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+#form_gov .select-wrapper{
+  width: 77% !important;
+}
+#form_gov .dropdown-content li>span {
+  color: #000000 !important;
+}
+#form_gov .select-wrapper input.select-dropdown{
+  height: 16px !important;
+}
+#form_gov .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+        display: none;
 }

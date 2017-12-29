@@ -1,22 +1,22 @@
-<div class="page" data-page="account">
+<div class="page no-toolbar no-navbar" data-page="account">
     <div class="page-content infinite-scroll" style="white-space: normal;">
-        <div class="card-header-pic">
+        <div class="card-header-pic" style="height: auto !important; margin-top: 0px !important; margin-left: auto; margin-bottom: auto;">
             <div class="card-header">
                 <a href="#" data-load="index" class="btn btn-floating btn-flat white waves-effect waves-teal waves-light back color-gray"><i class="icon f7-icons">arrow_left</i></a>Account
             </div>
-            <div class="content-block" id="display_accountInfo" style="padding: 0; margin: auto !important;">
+            <div class="content-block" id="display_accountInfo" style="padding: 0px; margin-top: 0px !important; margin-bottom: 0px !important;">
                <ul>
                    <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
-                       <div class="item-inner row show" id="display_givenName">
+                       <div class="item-inner row" id="display_givenName">
                            <div class="col s10"><small>Given Name: </small><strong></strong></div>
                            <div class="col s2">
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='GivenName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                           </div>
                        </div>
-                       <div class="row hidden edit" id="edit_givenName">
+                       <div class="card row hidden" id="edit_givenName" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
                         <form action="" method="POST" id='form_givenName' style="width: 100%">
                           <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" required="true" maxlength="30" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
                         </form>
@@ -29,7 +29,7 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='MiddleName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                           </div>
                        </div>
-                       <div class="row hidden" id="edit_middleName">
+                       <div class="card row hidden" id="edit_middleName" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
                         <form action="" method="POST" id='form_middleName' style="width: 100%">
                           <label class="col s12 a active" for="field_MiddleName">Middle Name</label>
                           <input type="text" id="field_MiddleName" value='' name="field_MiddleName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
@@ -44,7 +44,7 @@
                            <div class="col s2">
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='LastName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a></div>
                        </div>
-                       <div class="row hidden" id="edit_lastName">
+                       <div class="card row hidden" id="edit_lastName" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
                         <form action="" method="POST" id='form_lastName' style="width: 100%">
                           <label class="col s12 a active" for="field_LastName">Last Name</label>
                           <input type="text" id="field_LastName" value='' name="field_LastName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
@@ -60,10 +60,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Gender' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit_Gender">
+                       <div class="card row hidden" id="edit_Gender" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
                         <form action="" method="POST" id='form_Gender' style="width: 100%">
                           <label class="col s12 a active" for="field_Gender">Gender</label>
-                          <select id='field_Gender' name='field_Gender}'>
+                          <select id='field_Gender' name='field_Gender'>
                               <option value ='Male'>Male</option>
                               <option value ='Female'>Female</option>
                           </select>
@@ -79,10 +79,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Age' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_age" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_age' style="width: 100%">
+                          <label class="col s12 a active" for="field_Age">Age</label>
+                          <input type="text" id="field_Age" value='' name="field_Age" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -95,10 +95,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='DateOfBirth' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_dateOfBirth" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_dateOfBirth' style="width: 100%">
+                          <label class="col s12 a active" for="field_DateOfBirth">Date of Birth</label>
+                          <input type="date" id="field_DateOfBirth" value='' name="field_DateOfBirth" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -111,10 +111,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='PlaceOfBirth' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_placeOfBirth" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_placeOfBirth' style="width: 100%">
+                          <label class="col s12 a active" for="field_PlaceOfBirth">Place of Birth</label>
+                          <input type="text" id="field_PlaceOfBirth" value='' name="field_PlaceOfBirth" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -127,10 +127,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='PermanentAddress' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_address" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_PermanentAddress' style="width: 100%">
+                          <label class="col s12 a active" for="field_PermanentAddress">Permanent Address</label>
+                          <input type="text" id="field_PermanentAddress" value='' name="field_PermanentAddress" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -143,10 +143,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Citizenship' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_citizenship" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_Citizenship' style="width: 100%">
+                          <label class="col s12 a active" for="field_Citizenship">Citizenship</label>
+                          <input type="text" id="field_Citizenship" value='' name="field_Citizenship" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -159,10 +159,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Height' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_height" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_Height' style="width: 100%">
+                          <label class="col s12 a active" for="field_Height">Height (e.g. 5 ft 5 in)</label>
+                          <input type="text" id="field_Height" value='' name="field_Height" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -175,10 +175,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Weight' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_weight" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_Weight' style="width: 100%">
+                          <label class="col s12 a active" for="field_Weight">Weight (e.g. 60 kg)</label>
+                          <input type="text" id="field_Weight" value='' name="field_Weight" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -191,10 +191,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='MotherName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_mother" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_Mother' style="width: 100%">
+                          <label class="col s12 a active" for="field_MotherName">Mother's Name</label>
+                          <input type="text" id="field_MotherName" value='' name="field_MotherName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -207,10 +207,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='FatherName' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_father" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_father' style="width: 100%">
+                          <label class="col s12 a active" for="field_FatherName">Father's Name</label>
+                          <input type="text" id="field_FatherName" value='' name="field_FatherName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -223,10 +223,17 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Language' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_language" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_Language' style="width: 100%">
+                          <label class="col s12 active" for="field_Language">Language</label>
+                          <input type="text" id="field_Language" value='' name="field_Language" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <label class="col s12 active"  for='field_level'>Level</label>
+                          <select id="field_level" name="field_level">
+                              <option value="Beginner">Beginner</option>
+                              <option value="Conversational">Conversational</option>
+                              <option value="Fluent">Fluent</option>
+                              <option value="Native">Native</option>
+                          </select>
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -239,10 +246,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Religion' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_religion" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_religion' style="width: 100%">
+                          <label class="col s12 a active" for="field_Religion">Religion</label>
+                          <input type="text" id="field_Religion" value='' name="field_Religion" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -255,10 +262,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Mother_Occupation' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_mother_occupation" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_mother_occupation' style="width: 100%">
+                          <label class="col s12 a active" for="field_Mother_Occupation">Mother's Occupation</label>
+                          <input type="text" id="field_Mother_Occupation" value='' name="field_Mother_Occupation" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -271,10 +278,10 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Father_Occupation' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_father_occupation" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_father_occupation' style="width: 100%">
+                          <label class="col s12 a active" for="field_Father_Occupation">Given Name</label>
+                          <input type="text" id="field_Father_Occupation" value='' name="field_Father_Occupation" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -287,10 +294,17 @@
                             <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Skills' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                          </div>
                        </div>
-                       <div class="row hidden" id="edit">
-                        <form action="" method="POST" id='form_edit' style="width: 100%">
-                          <label class="col s12 a active" for="field_GivenName">Given Name</label>
-                          <input type="text" id="field_GivenName" value='' name="field_GivenName" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important;">
+                       <div class="card row hidden" id="edit_skills" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_skills' style="width: 100%">
+                          <label class="col s12 a active" for="field_Skills">Skills</label>
+                          <input type="text" id="field_Skills" value='' name="field_Skills" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <label class="col s12 active"  for='field_levelS'>Level</label>
+                          <select id="field_levelS" name="field_levelS">
+                              <option value="Beginner">Beginner</option>
+                              <option value="Intermediate">Intermediate</option>
+                              <option value="Advance">Advance</option>
+                              <option value="Expert">Expert</option>
+                          </select>
                           <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons">check</i></button>
                           <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black;">round_close</i></a>
                         </form>
@@ -299,5 +313,15 @@
                </ul> 
             </div>     
         </div>  
+    </div>
+    <!-- <div class="modal-overlay"></div> -->
+    <div class="popup popup-edit">
+        <div class="page-content login-screen-content infinite-scroll" style="background: transparent;">
+            <div class="content-block">
+                <div class="">Update account<i class="icon f7-icons close-popup" style="width: 25px; position: absolute;right: 5%;">close_round</i></div>
+                <div class="page-content" id="editpopup" style="overflow:hidden;">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
