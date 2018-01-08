@@ -1227,17 +1227,17 @@ var account = {
         $("a[data-cmd='UpdatePic']").on('click',function(){
             $('div.upload').removeClass('hidden');
             $('div.card-header-pic').addClass('hidden');
-            var picture = "img/profile/"+data[24];
+            var picture = "img/profile/profile.png";
             var content =   "<div class='card-content'>"+
                             "<div class=' center image-crop'>"+
-                            "   <img class='circle responsive-img' style='width: 145px; height: 145px; border:2px; border-style: solid; border-color: #2b9c9b' src='"+picture+"'>"+
+                            "   <img class='circle responsive-img' style='width: 145px; height: 145px; border:2px; border-style: solid; border-color: #2b9c9b' src=''>"+
                             "</div>"+
                             "<div class='center btn-group'>"+
                             "<label for='inputImage' class='btn-flat btn-xs btn-primary'>"+
                             "   <input type='file' accept='image/*' name='file' id='inputImage' class='hide'>"+
                             "   <i class='icon f7-icons'>add_round</i>"+
                             "</label>"+
-                            "<button class='btn-flat btn-warning btn-xs' data-load='index' data-cmd='cancel' type='button'>"+
+                            "<button class='btn-flat btn-warning btn-xs close-popup' data-load='index' data-cmd='cancel' type='button'>"+
                             "   <i class='icon f7-icons'>close_round</i>"+
                             "</button>"+
                             "<button class='btn-flat btn-info btn-xs hidden' data-cmd='rotate' data-option='-90' type='button' title='Rotate Left'>"+
@@ -1251,7 +1251,6 @@ var account = {
                             "</button>"+
                             "</div>"+
                             "</div>";
-                            console.log("sdsd");
             $("#profile_picture2").html(content);
             $('.tooltipped').tooltip({delay: 50});
           
@@ -1281,18 +1280,16 @@ var account = {
                                         $(this).html('Loading..').addClass('disabled');
                                         var ajax = system.ajax(processor+'do-update-image',[data[0],$image.cropper("getDataURL")]);
                                         ajax.done(function(data){
-                                            console.log(data);
                                             if(data == 1){
-                                                system.notification("Kareer","Success. Please wait.",false,2000,true,false,function(){
+                                                system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
                                                     $('div.upload').addClass('hidden');
                                                     $('div.card-header-pic').removeClass('hidden');
                                                     account.ini();
                                                 });
-                                                console.log(data);
+
                                             }
                                             else{
-                                               system.notification("Kareer","Failed.",false,3000,true,false,false);
-                                                console.log(data);
+                                                system.notification("Update","Failed.",false,3000,true,false,false);
                                             }
                                         });
                                     });

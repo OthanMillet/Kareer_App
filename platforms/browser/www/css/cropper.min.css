@@ -15,7 +15,9 @@
 	user-select: none;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none
-}
+	width: 300px !important;
+    height: 300px !important;
+ }
 .cropper-container img {
 	width: 100%;
 	height: 100%;
