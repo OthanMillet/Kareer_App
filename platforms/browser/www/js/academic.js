@@ -10,42 +10,48 @@ var academic = {
         var list = academic.getAll(applicantData[0][0]);
         $$("a[data-cmd='add-academic']").on('click',function(){
             academic.add(applicantData[0][0]);
+            $('div.display').addClass('hidden');
+            $('div.add').removeClass('hidden');
+            $('.card-header').addClass('hidden');
+            $('div.NAV ').addClass('hidden');
+            $('div.TOOL').addClass('hidden');
         });
         academic.show(list);
-
-        $("a.home").on('click',function(){
-            var data = $(this).data('load');
-            view.router.loadPage("pages/admin/"+data+".html");
-        });
-
-        app.onPageInit('index',function(page){
-            account.controller();
-        });
     },
     add:function(id){
-        app.popup('.popup-academic');
-        $('#field_yearLevel').material_select();
+        $$("i[data-cmd='close']").on('click',function(){
+            academic.ini()
+            $('div.display').removeClass('hidden');
+            $('div.add').addClass('hidden');
+            $('.card-header').removeClass('hidden');
+            $('div.NAV ').removeClass('hidden');
+            $('div.TOOL').removeClass('hidden');
+        });
+        $('select').material_select();
 
-        $("#field_yearLevel").on('change', function() {
+        $("#field_YearLevel").on('change', function() {
             var value = $(this).val();
+
             if ((value == 'Elementary') || (value == 'High School')){
                 $('#degree div').addClass('hidden');
                 $('#units div').addClass('hidden');
+                            console.log(value);
             }
             else if ((value == 'Tech Voc') || (value == 'College') || (value == 'Masteral') || (value == 'Doctorate')){
                 $('#degree div').removeClass('hidden');
                 $('#units div').removeClass('hidden');
+                            console.log(value);
             }
         });
 
         $("#form_academic").validate({
             rules: {
-                field_yearLevel: {required: true,maxlength:20},
-                field_school: {required: true,maxlength:100},
-                field_degree: {required: true,maxlength:100},
-                field_units: {required: true,maxlength:3,},
-                field_dateFrom: {required: true, maxlength:20},
-                field_dateTo: {required: true, maxlength:20, greaterThan: "#field_dateFrom"},
+                field_YearLevel: {required: true,maxlength:20},
+                field_School: {required: true,maxlength:100},
+                field_Degree: {required: true,maxlength:100},
+                field_Units: {required: true,maxlength:3,},
+                field_DateFrom: {required: true, maxlength:20},
+                field_DateTo: {required: true, maxlength:20, greaterThan: "#field_DateFrom"},
             },
             errorElement : 'div',
             errorPlacement: function(error, element) {
@@ -57,6 +63,33 @@ var academic = {
                     error.insertAfter(element);
                 }
             },
+            messages: {
+                  field_DateFrom: {
+                      required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  },
+                  field_DateTo: {
+                      required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      greaterThan: "<i data-error ='' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  },
+                  field_YearLevel: {
+                      required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  },
+                  field_School: {
+                      required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  },
+                  field_Degree: {
+                      required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  },
+                  field_Units: {
+                      required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                      maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  },
+            },
             submitHandler: function (form) {
                 var _form = $(form).serializeArray();
                 var data = system.ajax(processor+'do-academic',[id,_form]);
@@ -65,8 +98,12 @@ var academic = {
                     if(data != 0){
                         $$("input").val("");
                         system.notification("Kareer","Academic Added.",false,2000,true,false,function(){
-                            app.closeModal('.popup-academic');
-                            academic.ini();
+                            academic.ini()
+                            $('div.display').removeClass('hidden');
+                            $('div.add').addClass('hidden');
+                            $('.card-header').removeClass('hidden');
+                            $('div.NAV ').removeClass('hidden');
+                            $('div.TOOL').removeClass('hidden');
                         });
                     }
                     else{
@@ -122,6 +159,11 @@ var academic = {
             $('div.TOOL').addClass('hidden');
         });
 
+        $$('a.back').on('click', function(){
+            view.router.back();
+            academic.ini();
+        });
+
         $("a.academic").on('click',function(){
             var data = $(this).data('load');
             view.router.loadPage("pages/admin/"+data+".html");
@@ -133,12 +175,12 @@ var academic = {
     display:function(a){
         var period = a[0][5];
         if((a[0][2] == 'Elementary') || (a[0][2] == 'High School')){
-            $('li.degree').addClass('hidden');
-            $('li.units').addClass('hidden');
+            $('div.degree').addClass('hidden');
+            $('div.units').addClass('hidden');
         }
         else if ((a[0][2] == 'Tech Voc') || (a[0][2] == 'College') || (a[0][2] == 'Masteral') || (a[0][2] == 'Doctorate')){
-            $('li.degree').removeClass('hidden');
-            $('li.units').removeClass('hidden');
+            $('div.degree').removeClass('hidden');
+            $('div.units').removeClass('hidden');
         }
         $$("#display_Year_level strong").html(a[0][2]);
         $$("#display_Year_level a").attr({"data-node":a[0][0]});
@@ -170,73 +212,63 @@ var academic = {
         });
         $$("a[data-cmd='delete']").on('click',function(){
             academic.delete(a);
+            $('div.display').addClass('hidden');
+            $('div.focus').addClass('hidden');
+            $('div.delete').removeClass('hidden');
+            $('.card-header').addClass('hidden');
+            $('div.NAV ').addClass('hidden');
+            $('div.TOOL').addClass('hidden');
         });
     },
     delete:function(a){
-        var id = a[0][0];
-        app.popup('.popup-delete');
-        var content =   `<ul>
-                            <li>
-                                <h5 class = 'center'>Are you sure?
-                                </h5>
-                            </li>
-                            <li>
-                                <a href='#' class='btn close-popup waves-effect waves-teal waves-light btn btn-flat grey-text white'>Cancel</a>
-                                <a data-cmd='proceed' class='waves-effect waves-teal waves-light btn btn-flat grey-text white'>Yes</a>
-                            </li>
-                        </ul>`;
-        $("#deletePopup").html(`<div class="card-content">${content}</div>`);
-        $("a[data-cmd='proceed']").on('click',function(){
-            var acad = system.ajax(processor+'do-deleteAcad',id);
-            acad.done(function(data){
-                if(data != 0){
-                    system.notification("Kareer","Success. Please wait.",false,2000,true,false,function(){
-                        app.closeModal('.popup-delete');
-                        academic.ini();
-                        $('div.display').removeClass('hidden');
-                        $('div.focus').addClass('hidden');
-                        $('.card-header a').removeClass('hidden');
-                        $('div.NAV').removeClass('hidden');
-                        $('div.TOOL').removeClass('hidden');
-                    });
+      var id = a[0][0];
+      $$("a[data-cmd='cancel']").on('click',function(){
+          academic.display(a);
+          $('div.display').addClass('hidden');
+          $('div.focus').removeClass('hidden');
+          $('div.delete').addClass('hidden');
+          $('.card-header').removeClass('hidden');
+          $('div.NAV').removeClass('hidden');
+          $('div.TOOL').removeClass('hidden');
+      });
+      $$("a[data-cmd='proceed']").on('click',function(){
+          var acad = system.ajax(processor+'do-deleteAcad',id);
+          acad.done(function(data){
+              if(data != 0){
+                  system.notification("Kareer","Success. Please wait.",false,2000,true,false,function(){
+                      academic.ini();
+                      $('div.display').removeClass('hidden');
+                      $('div.focus').addClass('hidden');
+                      $('div.delete').addClass('hidden');
+                      $('.card-header').removeClass('hidden');
+                      $('.card-header a').removeClass('hidden');
+                      $('div.NAV').removeClass('hidden');
+                      $('div.TOOL').removeClass('hidden');
+                  });
 
-                }
-                else{
-                    system.notification("Kareer","Failed.",false,3000,true,false,false);
-                }
-            });
-        });
-    },
+              }
+              else{
+                  system.notification("Kareer","Failed.",false,3000,true,false,false);
+              }
+          });
+      });
+  },
     edit:function(a){
         $$("a[data-cmd='update']").on('click',function(){
             var data = $(this).data();
             var id = data.node;
-            app.popup('.popup-update');
             if(data.prop == "Year"){
-                var content =   `<form action="" method="POST" id='form_edit'>
-                                    <div class="list-block">
-                                        <ul>
-                                            <li>
-                                                <div class="input-field" style='border: gray; border-width: 1px; background-color: rgba(238, 238, 238, 0.15); border-style: solid; border-radius: 15px;'>
-                                                    <select id="field_yearLevel" name="field_yearLevel">
-                                                        <option value="Elementary">ELEMENTARY</option>
-                                                        <option value="High School">HIGH SCHOOL</option>
-                                                        <option value="Tech Voc">TECH VOC</option>
-                                                        <option value="College">COLLEGE</option>
-                                                        <option value="Masteral">MASTERAL</option>
-                                                        <option value="Doctorate">DOCTORATE</option>
-                                                    </select>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <button class="btn teal waves-effect waves-teal waves-light" style="width: 100%; top: 20px;">Save</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>`;
-                $("#updateAcad").html(content);
+                $('#edit_year').removeClass('hidden');
+                $('#year').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = academic.get(id);
+                    academic.display(newdata);
+                    $('#edit_year').addClass('hidden');
+                    $('#year').removeClass('hidden');
+                });
                 $('select').material_select();
-                $("#form_edit").validate({
+                $('div.select-wrapper').addClass('col s8'); 
+                $("#form_year").validate({
                     rules: {
                         field_yearLevel: {required: true,maxlength:20},
                     },
@@ -250,6 +282,12 @@ var academic = {
                             error.insertAfter(element);
                         }
                     },
+                    messages: {
+                        field_position: {
+                          required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                          maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
                     submitHandler: function (form) {
                         var _form = $(form).serializeArray();
                         var data = system.ajax(processor+'do-updateAcad',[id,_form]);
@@ -257,10 +295,10 @@ var academic = {
                             console.log(data);
                             if(data != 0){
                                 system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
-                                    app.closeModal('.popup-update');
                                     var newdata = academic.get(id);
-                                    academic.edit(newdata);
                                     academic.display(newdata);
+                                    $('#edit_year').addClass('hidden');
+                                    $('#year').removeClass('hidden');
                                 });
 
                             }
@@ -272,23 +310,15 @@ var academic = {
                 });
             }
             else if(data.prop == "School"){
-                var content =   `<form action="" method="POST" id='form_edit'>
-                                    <div class="list-block">
-                                        <ul>
-                                            <li>
-                                                <div class="input-field">
-                                                    <input type='text' id="field_school" name="field_school" class="form-control">
-                                                    <label class="" for="field_school" style="color: black; top: -2px !important; left: 0px !important;">Name of Schools</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <button class="btn teal waves-effect waves-teal waves-light" style="width: 100%; top: 20px;">Save</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>`;
-                $("#updateAcad").html(content);
-                $("#form_edit").validate({
+                $('#edit_school').removeClass('hidden');
+                $('#school').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = academic.get(id);
+                    academic.display(newdata);
+                    $('#edit_school').addClass('hidden');
+                    $('#school').removeClass('hidden');
+                });
+                $("#form_school").validate({
                     rules: {
                         field_school: {required: true,maxlength:100}
                     },
@@ -302,6 +332,12 @@ var academic = {
                             error.insertAfter(element);
                         }
                     },
+                    messages: {
+                        field_school: {
+                          required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                          maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
                     submitHandler: function (form) {
                         var _form = $(form).serializeArray();
                         var data = system.ajax(processor+'do-updateAcad',[id,_form]);
@@ -309,10 +345,10 @@ var academic = {
                             console.log(data);
                             if(data != 0){
                                 system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
-                                    app.closeModal('.popup-update');
                                     var newdata = academic.get(id);
-                                    academic.edit(newdata);
                                     academic.display(newdata);
+                                    $('#edit_school').addClass('hidden');
+                                    $('#school').removeClass('hidden');
                                 });
 
                             }
@@ -324,23 +360,15 @@ var academic = {
                 });
             }
             else if(data.prop == "Degree"){
-                var content =   `<form action="" method="POST" id='form_edit'>
-                                    <div class="list-block">
-                                        <ul>
-                                            <li>
-                                                 <div class="input-field">
-                                                    <input type='text' id="field_degree" name="field_degree" class="form-control">
-                                                    <label class="" for="field_degree" style="color: black; top: -2px !important; left: 0px !important;">Basic Education/Degree/Course</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <button class="btn teal waves-effect waves-teal waves-light" style="width: 100%; top: 20px;">Save</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>`;
-                $("#updateAcad").html(content);
-                $("#form_edit").validate({
+                $('#edit_educcation').removeClass('hidden');
+                $('#educcation').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = academic.get(id);
+                    academic.display(newdata);
+                    $('#edit_educcation').addClass('hidden');
+                    $('#educcation').removeClass('hidden');
+                });
+                $("#form_educcation").validate({
                     rules: {
                         field_degree: {required: true, maxlength:100},
                     },
@@ -354,6 +382,12 @@ var academic = {
                             error.insertAfter(element);
                         }
                     },
+                    messages: {
+                        field_degree: {
+                            required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                            maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
                     submitHandler: function (form) {
                         var _form = $(form).serializeArray();
                         var data = system.ajax(processor+'do-updateAcad',[id,_form]);
@@ -361,10 +395,10 @@ var academic = {
                             console.log(data);
                             if(data != 0){
                                 system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
-                                    app.closeModal('.popup-update');
                                     var newdata = academic.get(id);
-                                    academic.edit(newdata);
                                     academic.display(newdata);
+                                    $('#edit_educcation').addClass('hidden');
+                                    $('#educcation').removeClass('hidden');
                                 });
 
                             }
@@ -376,23 +410,15 @@ var academic = {
                 });
             }
             else if(data.prop == "Units"){
-                var content =   `<form action="" method="POST" id='form_edit'>
-                                    <div class="list-block">
-                                        <ul>
-                                            <li>
-                                                <div class="input-field">
-                                                    <input type='number' id="field_units" name="field_units" class="form-control">
-                                                    <label class="" for="field_units" style="color: black; top: -2px !important; left: 0px !important;">Units Earned</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <button class="btn teal waves-effect waves-teal waves-light" style="width: 100%; top: 20px;">Save</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>`;
-                $("#updateAcad").html(content);
-                $("#form_edit").validate({
+                $('#edit_units').removeClass('hidden');
+                $('#units').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = academic.get(id);
+                    academic.display(newdata);
+                    $('#edit_units').addClass('hidden');
+                    $('#units').removeClass('hidden');
+                });
+                $("#form_units").validate({
                     rules: {
                         field_units: {required: true,maxlength:3},
                     },
@@ -406,6 +432,12 @@ var academic = {
                             error.insertAfter(element);
                         }
                     },
+                    messages: {
+                        field_units: {
+                          required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                          maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
                     submitHandler: function (form) {
                         var _form = $(form).serializeArray();
                         var data = system.ajax(processor+'do-updateAcad',[id,_form]);
@@ -413,10 +445,10 @@ var academic = {
                             console.log(data);
                             if(data != 0){
                                 system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
-                                    app.closeModal('.popup-update');
                                     var newdata = academic.get(id);
-                                    academic.edit(newdata);
                                     academic.display(newdata);
+                                    $('#edit_units').addClass('hidden');
+                                    $('#units').removeClass('hidden');
                                 });
 
                             }
@@ -428,34 +460,18 @@ var academic = {
                 });
             }
             else if(data.prop == "Dates"){
-                var content =   `<form action="" method="POST" id='form_edit'>
-                                    <div class="list-block">
-                                        <ul>
-                                            <li>
-                                                <div>
-                                                    <div class="input-field">
-                                                        <label class="active" style="top: auto; left: 0px; font-size: 17px; color: black;">Period of Attendance (From - To)</label>
-                                                        <div>
-                                                            <input type='month' id="field_dateF"  name="field_dateF" class="form-control" style="width: 100%;">
-                                                        </div>
-                                                        <div>
-                                                            <input type='month' id="field_dateT" name="field_dateT" class="form-control" style="width: 100%;">
-                                                        </div>
-                                                    </div>                                            
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <button class="btn teal waves-effect waves-teal waves-light" style="width: 100%; top: 20px;">Save</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>`;
-                $("#updateAcad").html(content);
-                $("#form_edit").validate({
+                $('#edit_attendance').removeClass('hidden');
+                $('#attendance').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = academic.get(id);
+                    academic.display(newdata);
+                    $('#edit_attendance').addClass('hidden');
+                    $('#attendance').removeClass('hidden');
+                });
+                $("#form_attendance").validate({
                     rules: {
                         field_dateF: {required: true, maxlength:20},
                         field_dateT: {required: true, maxlength:20, greaterThan: "#field_dateF"},
-                        // field_dateTo: { greaterThan: "#field_dateFrom" },
                     },
                     errorElement : 'div',
                     errorPlacement: function(error, element) {
@@ -467,6 +483,17 @@ var academic = {
                             error.insertAfter(element);
                         }
                     },
+                    messages: {
+                        field_dateF: {
+                              required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                              maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                         },
+                        field_dateT: {
+                              required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                              maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                              greaterThan: "<i data-error ='TO date must be greater than FROM date.' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
                     submitHandler: function (form) {
                         var _form = $(form).serializeArray();
                         var data = system.ajax(processor+'do-updateAcad',[id,_form]);
@@ -474,10 +501,10 @@ var academic = {
                             console.log(data);
                             if(data != 0){
                                 system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
-                                    app.closeModal('.popup-update');
                                     var newdata = academic.get(id);
-                                    academic.edit(newdata);
                                     academic.display(newdata);
+                                    $('#edit_attendance').addClass('hidden');
+                                    $('#attendance').removeClass('hidden');
                                 });
 
                             }

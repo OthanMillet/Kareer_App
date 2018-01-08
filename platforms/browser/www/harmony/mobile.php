@@ -270,6 +270,7 @@ $Functions = new DatabaseClasses;
     if (isset($_GET['do-deleteCareer'])){
         $data = $_POST['data'];
         $query = $Functions->PDO("DELETE FROM tbl_career WHERE id = '{$data}';");
+        // print($query);
         if($query->execute()){
             echo 1;
         }

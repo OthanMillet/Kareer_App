@@ -331,3 +331,25 @@ body {
     font-size: 20px;
         display: none;
 }
+#form_year .select-dropdown{
+  text-align: left;
+  background: white;
+  position: inherit !important;
+}
+#form_year .select-wrapper{
+  width: 77% !important;
+}
+#form_year .dropdown-content li>span {
+  color: #000000 !important;
+}
+#form_year .select-wrapper input.select-dropdown{
+  height: 16px !important;
+}
+#form_year .select-wrapper span.caret {
+    color: initial;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+        display: none;
+}

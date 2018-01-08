@@ -42,11 +42,10 @@ var career = {
               field_dateFirst: {required: true, maxlength:20},
               field_dateLast: {required: true, maxlength:20},
               field_dateLast: { greaterThan: "#field_dateFirst" },
-              field_position: {required: true, maxlength:100},
-              field_agency: {required: true, maxlength:100},
-              field_salary: {required: true, maxlength:5},
-              field_appointment: {required: true, maxlength:100},
-              field_govt_service: {required: true, maxlength:100},
+              field_Position: {required: true, maxlength:100},
+              field_Agency: {required: true, maxlength:100},
+              field_Salary: {required: true, maxlength:5},
+              field_Appointment: {required: true, maxlength:100},
           },
           errorElement : 'div',
           errorPlacement: function(error, element) {
@@ -57,6 +56,33 @@ var career = {
               else{
                   error.insertAfter(element);
               }
+          },
+          messages: {
+              field_dateFirst: {
+                  required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+              },
+              field_dateLast: {
+                  required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  greaterThan: "<i data-error ='' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+              },
+              field_Position: {
+                  required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+              },
+              field_Agency: {
+                  required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+              },
+              field_Salary: {
+                  required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+              },
+              field_Appointment: {
+                  required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                  maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+              },
           },
           submitHandler: function (form) {
               var _form = $(form).serializeArray();
@@ -196,6 +222,7 @@ var career = {
       $$("a[data-cmd='proceed']").on('click',function(){
           var acad = system.ajax(processor+'do-deleteCareer',id);
           acad.done(function(data){
+            console.log(data);
               if(data != 0){
                   system.notification("Kareer","Success. Please wait.",false,2000,true,false,function(){
                       career.ini();
@@ -436,7 +463,7 @@ var career = {
                   $('#edit_appointment').addClass('hidden');
                   $('#appointment').removeClass('hidden');
               });
-              $("#form_edit").validate({
+              $("#form_appointment").validate({
                   rules: {
                       field_appointment: {required: true, maxlength:100}
                   },

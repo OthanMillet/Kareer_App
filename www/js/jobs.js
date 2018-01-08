@@ -4,109 +4,6 @@ var processor = 'http://localhost/Kareer_App/www/harmony/mobile.php?';
 var directory = '/';
 var $$ = Dom7;
 var view = app.addView('.view-main');
-var system = {
-    ini:function(){
-        // var deviceSize = system.getDeviceSize();
-        // console.log(deviceSize);
-        logIn.ini();
-        signUp.ini();
-        // content.ini();
-    },
-    notification:function(title,message,button,timeout,loader,_functionOpen,_functionClose){
-        var timeout = (timeout == "")?false:timeout;
-        app.addNotification({
-            title: title,
-            message: message,
-            button:button,
-            onClose:function(){
-                if(_functionClose != false){
-                    _functionClose();
-                }
-            }
-        });
-        if(timeout != false){
-            setTimeout(function(){
-                app.closeNotification(".notification-item");
-            },timeout);
-        }
-        if(_functionOpen != false){
-            _functionOpen();                
-        }
-    },
-    ajax:function(url,data){
-        return $.ajax({
-            type: "POST",
-            url: url,
-            data: {data: data},
-            async: !1,
-            cache:false,
-            error: function() {
-                console.log("Error occured")
-            }
-        });        
-    },
-    html:function(url){
-        return $.ajax({
-            type: "GET",
-            url: url,
-            crossDomain: true,
-            dataType:'jsonp',
-            jsonp:true,
-            headers: 'X-Requested-With: XMLHttpRequest',
-            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-            error: function() {
-                console.log("Error occured")
-            }
-        });
-    },
-    xml:function(url){
-        return $.ajax({
-            type: "GET",
-            url: url,
-            dataType: 'xml',
-            async: !1,
-            cache:false
-        });
-    },
-    popover:function(title,message){
-        var mainView = app.addView('.view-main');            
-        app.addNotification({
-            title: title,
-            message: message
-        });
-    },
-    preloader:function(status){
-        if(status){
-            var container = $$('body');
-            if (container.children('.progressbar, .progressbar-infinite').length) return; //don't run all this if there is a current progressbar loading
-            app.showProgressbar(container, 'multi');
-        }
-        else{
-            app.hideProgressbar();              
-        }
-    },
-    block:function(status){
-        if(status){
-            app.popup('.loader');
-        }
-        else{
-            app.closeModal('.loader');
-        }
-    },
-    logoHandler:function(){
-        var bg = 'img/img-bg.jpg';
-        var logo = 'img/logo.png';
-        bg = (localStorage.getItem('bg')!=null)?localStorage.getItem('bg'):bg;
-        logo = (localStorage.getItem('logo')!=null)?localStorage.getItem('logo'):logo;
-
-        $("img[src='img/logo.png']").attr({'src':logo});
-        $(".panel .panel-bg").attr({'style':'background-image:url('+bg+');'});
-    },      
-    getDeviceSize:function(){
-        var device = window;
-        return window.innerWidth;
-    }
-}
 var jobs = {
     show:function(list){
         var applicantData = JSON.parse(localStorage.getItem('applicant'));
@@ -114,7 +11,6 @@ var jobs = {
         var content = "";
         var height = $(window).height();
         $.each(list,function(i,v){
-            // console.log(v);
             var skills = "", bookmarkButtonSettings = "";
             bookmarkButtonSettings = ($.inArray(v[0],bookmarks)>=0)?"disabled":"";
             v[5] = JSON.parse(v[5]);

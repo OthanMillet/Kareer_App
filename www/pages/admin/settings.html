@@ -2,50 +2,64 @@
     <div class="page-content infinite-scroll" style="white-space: normal;">
         <div class="card-header-pic" style="height: auto !important; margin-top: 0px !important; margin-left: auto; margin-bottom: auto;">
             <div class="card-header">
-                <a href="#" data-load="index" class="btn btn-floating btn-flat white waves-effect waves-teal waves-light home color-gray"><i class="icon f7-icons">arrow_left</i></a>Settings
+                <a href="#" data-load="index" class="btn btn-floating btn-flat white waves-effect waves-teal waves-light back color-gray"><i class="icon f7-icons">arrow_left</i></a>Settings
             </div>
-            <div class="li-block" id="display_accountInfo">
+            <div class="display content-block" id="display_accountInfo" style="padding: 0px; margin-top: 0px !important; margin-bottom: 0px !important;">
                <ul>
-                   <li class="item-content">
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
                        <div class="item-inner row" id="display_email">
                            <div class="col s10"><small>Email: </small><strong></strong></div>
                            <div class="col s2">
-                            <a href="#" data-cmd = "update" data-popup='updateSettings' data-value='' data-node ='' data-prop='Email' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Email' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                           </div>
                        </div>
+                       <div class="card row hidden" id="edit_email" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_email' style="width: 100%">
+                          <label class="col s12 a active" for="field_Email">Email</label>
+                          <input type="text" id="field_Email" value='' name="field_Email" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                        </form>
+                       </div>
                    </li>
-                   <li class="item-content">
+                   <li class="item-content" style="padding-left: 0px !important; padding-right: 0px !important;">
                        <div class="item-inner row" id="display_password">
                            <div class="col s10"><small>Password: </small><strong></strong></div>
                            <div class="col s2">
-                            <a href="#" data-cmd = "update" data-popup='updateSettings' data-value='' data-node ='' data-prop='Password' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
+                            <a href="#" data-cmd = "edit" data-value='' data-node ='' data-prop='Password' class="btn btn-floating btn-flat waves-effect waves-teal waves-light"><i class="icon f7-icons color-gray">compose</i></a>
                           </div>
+                       </div>
+                       <div class="card row hidden" id="edit_password" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                        <form action="" method="POST" id='form_password' style="width: 100%">
+                          <label class="col s12 a active" for="field_password">Password</label>
+                          <input type="password" id="field_password" value='' name="field_password" class="col s8 form-control" style="    margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                          <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                          <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                        </form>
                        </div>
                    </li>
                </ul>
-            </div>
-            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                <a data-cmd='account-logout' data-load='logout' class="btn-floating btn-small red waves-effect waves-red waves-light" style="right: -4px; height: 50px; width: 50px; top: 15px;"><i class="icon f7-icons" style="top: 5px;">logout</i></a>
-            </div>     
-        </div>  
-    </div>
-    <div class="popup-overlay"></div>
-    <div class="popup popup-update">
-        <div class="page-content login-screen-content infinite-scroll" style="background: transparent;">
-            <div class="content-block">
-                <div class="">Update account<i class="icon f7-icons close-popup" style="width: 25px; position: absolute;right: 5%;">close_round</i></div>
-                <div class="page-content" id="updateSettings" style="overflow:hidden;">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="popup popup-logout">
-        <div class="page-content login-screen-content infinite-scroll" style="background: transparent;">
-            <div class="content-block">
+              <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                  <a data-cmd='account-logout' data-load='logout' class="btn-floating btn-small red waves-effect waves-red waves-light" style="right: -4px; height: 50px; width: 50px; top: 15px;"><i class="icon f7-icons" style="top: 5px;">logout</i></a>
+              </div>  
+            </div> 
+            <div class="logout content-block hidden">
                 <div>Logout</div>
-                <div class="page-content" id ="logout" style="overflow:hidden;">
-                </div>
-            </div>
-        </div>
+                    <div class="content-block">
+                        <ul>
+                            <li>
+                                <div class="item-content center">
+                                    Are you sure?
+                                </div>
+                            </li>
+                            <li style="margin-top: 5% !important;">
+                                <a data-cmd="cancel" class='btn waves-effect waves-teal waves-light btn btn-flat grey-text white'>Cancel</a>
+                                <a data-cmd='proceed' class='waves-effect waves-teal waves-light btn btn-flat grey-text white'>Yes</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>  
+        </div>  
     </div>
 </div>

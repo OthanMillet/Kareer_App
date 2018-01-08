@@ -8,6 +8,7 @@ var account = {
     ini:function(){
         var applicantData = JSON.parse(localStorage.getItem('applicant'));
         var data = account.get(applicantData[0][0]);
+        account.updatePicture(data);
         $("#index img.responsive-img").attr({"src":"img/profile/"+data[24]});
         var content = "<div class='content-block'>"+
                         "    <p class='color-gray'><h5>"+data[7]+" "+data[8]+"</h5></p>"+
@@ -68,6 +69,28 @@ var account = {
             app.onPageInit('career',function(page){
                 console.log('page');
                 career.ini();
+            });
+        });
+        $$("a.bookmarks").on('click',function(){
+            var data = $$(this).data('load');
+            view.router.loadPage("pages/admin/"+data+".html");
+            console.log(data);
+            app.onPageInit('bookmarks',function(page){
+                console.log('page');
+                var applicant = JSON.parse(localStorage.getItem('applicant'));
+                var jobList = jobs.getBookmarked(applicant[0][0]);
+                jobs.show(jobList);
+            });
+        });
+        $$("a.settings").on('click',function(){
+            var data = $$(this).data('load');
+            view.router.loadPage("pages/admin/"+data+".html");
+            app.onPageInit('settings',function(page){
+                console.log('settings');
+                var applicantData = JSON.parse(localStorage.getItem('applicant'));
+                var data = account.get(applicantData[0][0]);
+                account.settings(data);
+                account.edit(data);
             });
         });
     },
@@ -143,6 +166,21 @@ var account = {
             account.ini();
         });
     },
+    settings:function(data){
+        $$("#display_email strong").html(data[3]);
+        $$("#display_email a").attr({"data-node":data[0]});
+        $$("#display_password strong").html("*******");
+        $$("#display_password a").attr({"data-node":data[0]});
+        $("a.home").on('click',function(){
+            var data = $(this).data('load');
+            view.router.loadPage("pages/admin/"+data+".html");
+        });
+        $$('a.back').on('click', function(){
+            view.router.back();
+            account.ini();
+        });
+        account.logout(data);
+    },
     get:function(id){
         var $data = "";
         var jobs = system.ajax(processor+'get-applicant',id);
@@ -156,7 +194,122 @@ var account = {
             // app.popup('.popup-edit');
             var data = $(this).data();
             var id = data.node;
-            if(data.prop == "GivenName"){
+            if(data.prop == "Email"){
+                $('#edit_email').removeClass('hidden');
+                $('#display_email').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = account.get(id);
+                    account.settings(newdata);
+                    $('#edit_email').addClass('hidden');
+                    $('#display_email').removeClass('hidden');
+                });       
+                $("#form_email").validate({
+                    rules: {
+                        field_Email: {required: true,email:true,maxlength:100,validateEmail:true}
+                    },
+                    errorElement : 'div',
+                    errorPlacement: function(error, element) {
+                        var placement = $(element).data('error');
+                        if(placement){
+                            $(placement).append(error)
+                        } 
+                        else{
+                            error.insertAfter(element);
+                        }
+                    },
+                    messages: {
+                        field_Email: {
+                            required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                            maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                            email: "<i data-error ='' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                            validateEmail: "<i data-error ='' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
+                    submitHandler: function (form) {
+                        var _form = $(form).serializeArray();
+                        var data = system.ajax(processor+'do-update',[id,_form]);
+                        data.done(function(data){
+                            console.log(data);
+                            if(data != 0){
+                                system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
+                                    var newdata = account.get(id);
+                                    account.settings(newdata);
+                                    $('#edit_email').addClass('hidden');
+                                    $('#display_email').removeClass('hidden');
+                                });
+
+                            }
+                            else{
+                                system.notification("Update","Failed.",false,3000,true,false,false);
+                            }
+                        })
+                    }
+                });
+            }
+            else if(data.prop == "Password"){
+                $('#edit_password').removeClass('hidden');
+                $('#display_password').addClass('hidden');
+                $("a[data-cmd='cancel']").on('click', function(){
+                    var newdata = account.get(id);
+                    account.settings(newdata);
+                    $('#edit_password').addClass('hidden');
+                    $('#display_password').removeClass('hidden');
+                });       
+                $("#form_password").validate({
+                    rules: {
+                        field_password: {required: true, maxlength: 50,checkPassword:true}
+                    },
+                    errorElement : 'div',
+                    errorPlacement: function(error, element) {
+                        var placement = $(element).data('error');
+                        if(placement){
+                            $(placement).append(error)
+                        } 
+                        else{
+                            error.insertAfter(element);
+                        }
+                    },
+                    messages: {
+                        field_password: {
+                            required: "<i data-error ='Field is required' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                            maxlength: "<i data-error ='Name is too long' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                            checkPassword: "<i data-error ='' class='icon f7-icons tiny color red' style='margin:5px;'>info</i>",
+                        },
+                    },
+                    submitHandler: function (form) {
+                        var _form = $(form).serializeArray();
+                        var data = system.ajax(processor+'do-update',[id,_form]);
+                        data.done(function(data){
+                            console.log(data);
+                            if(data != 0){
+                                system.notification("Update","Success. Please wait.",false,2000,true,false,function(){
+                                    var newdata = account.get(id);
+                                    account.settings(newdata);
+                                    $('#edit_password').addClass('hidden');
+                                    $('#display_password').removeClass('hidden');
+                                });
+
+                            }
+                            else{
+                                system.notification("Update","Failed.",false,3000,true,false,false);
+                            }
+                        })
+                    }
+                });
+                $$("a[data-cmd='showPassword']").on('click',function(){
+                    $("#password input").attr({"type":"text"});
+                    $("a.x").addClass('hidden');
+                    $("a.y").removeClass('hidden');
+
+                }); 
+                $$("a[data-cmd='hidePassword']").on('click',function(){
+                    $("#password input").attr({"type":"password"});
+                    $("a.y").addClass('hidden');
+                    $("a.x").removeClass('hidden');
+
+                });
+            }
+            else if(data.prop == "GivenName"){
                 $('#edit_givenName').removeClass('hidden');
                 $('#display_givenName').addClass('hidden');
                 $("a[data-cmd='cancel']").on('click', function(){
@@ -1068,6 +1221,129 @@ var account = {
                     }
                 });
             }
+        });
+    },
+    updatePicture:function(data){
+        $("a[data-cmd='UpdatePic']").on('click',function(){
+            $('div.upload').removeClass('hidden');
+            $('div.card-header-pic').addClass('hidden');
+            var picture = "img/profile/"+data[24];
+            var content =   "<div class='card-content'>"+
+                            "<div class=' center image-crop'>"+
+                            "   <img class='circle responsive-img' style='width: 145px; height: 145px; border:2px; border-style: solid; border-color: #2b9c9b' src='"+picture+"'>"+
+                            "</div>"+
+                            "<div class='center btn-group'>"+
+                            "<label for='inputImage' class='btn-flat btn-xs btn-primary'>"+
+                            "   <input type='file' accept='image/*' name='file' id='inputImage' class='hide'>"+
+                            "   <i class='icon f7-icons'>add_round</i>"+
+                            "</label>"+
+                            "<button class='btn-flat btn-warning btn-xs' data-load='index' data-cmd='cancel' type='button'>"+
+                            "   <i class='icon f7-icons'>close_round</i>"+
+                            "</button>"+
+                            "<button class='btn-flat btn-info btn-xs hidden' data-cmd='rotate' data-option='-90' type='button' title='Rotate Left'>"+
+                            "   <i class='icon f7-icons'>undo</i>"+
+                            "</button>"+
+                            "<button class='btn-flat btn-info btn-xs hidden' data-cmd='rotate' data-option='90' type='button' title='Rotate Right'>"+
+                            "   <i class='icon f7-icons'>redo</i>"+
+                            "</button>"+
+                            "<button class='btn-flat btn-danger btn-xs hidden' data-cmd='save' type='button'>"+
+                            "   <i class='icon f7-icons'>check</i>"+
+                            "</button>"+
+                            "</div>"+
+                            "</div>";
+                            console.log("sdsd");
+            $("#profile_picture2").html(content);
+            $('.tooltipped').tooltip({delay: 50});
+          
+            var $inputImage = $("#inputImage");
+            if(window.FileReader){
+                $inputImage.change(function() {
+                    var fileReader = new FileReader(),
+                            files = this.files,
+                            file;
+
+                    file = files[0];
+
+                    if (/^image\/\w+$/.test(file.type)) {
+                        fileReader.readAsDataURL(file);
+                        fileReader.onload = function () {
+                            $inputImage.val("");
+
+                            var $image = $(".image-crop > img")
+                            $($image).cropper({
+                                aspectRatio: 1/1,
+                                autoCropArea: 0.80,
+                                preview: ".avatar-preview",
+                                built: function () {
+                                    $("button[data-cmd='save']").removeClass('hidden');
+                                    $("button[data-cmd='rotate']").removeClass('hidden');
+                                    $("button[data-cmd='save']").click(function(){                                          
+                                        $(this).html('Loading..').addClass('disabled');
+                                        var ajax = system.ajax(processor+'do-update-image',[data[0],$image.cropper("getDataURL")]);
+                                        ajax.done(function(data){
+                                            console.log(data);
+                                            if(data == 1){
+                                                system.notification("Kareer","Success. Please wait.",false,2000,true,false,function(){
+                                                    $('div.upload').addClass('hidden');
+                                                    $('div.card-header-pic').removeClass('hidden');
+                                                    account.ini();
+                                                });
+                                                console.log(data);
+                                            }
+                                            else{
+                                               system.notification("Kareer","Failed.",false,3000,true,false,false);
+                                                console.log(data);
+                                            }
+                                        });
+                                    });
+                                }
+                            });
+
+                            $image.cropper("reset", true).cropper("replace", this.result);
+
+                            $("button[data-cmd='rotate']").click(function(){
+                                var data = $(this).data('option');
+                                $image.cropper('rotate', data);
+                            });
+
+                        };
+                    }
+                    else{
+                        showMessage("Please choose an image file.");
+                    }
+                });
+            }
+            else{
+                $inputImage.addClass("hide");
+            }
+            $("button[data-cmd='cancel']").click(function(){
+                $('div.upload').addClass('hidden');
+                $('div.card-header-pic').removeClass('hidden');
+                account.ini();
+            });
+        });
+    },
+    logout:function(data){
+        $("a[data-cmd='account-logout']").on('click',function(){
+            $('div.display').addClass('hidden');
+            $('div.logout').removeClass('hidden');
+            $('.card-header').addClass('hidden');
+            $("a[data-cmd='proceed']").on('click',function(){
+                console.log("uwian na");
+                localStorage.removeItem('applicant','');
+                localStorage.removeItem('applications','');
+                localStorage.removeItem('bookmarks','');
+                window.location.reload();
+            });
+            $("a[data-cmd='cancel']").on('click',function(){
+                var newdata = account.get(data[0]);
+                account.settings(newdata);
+                account.edit(newdata);
+                $('div.display').removeClass('hidden');
+                $('div.logout').addClass('hidden');
+                $('.card-header').removeClass('hidden');
+            });
+
         });
     }
 }

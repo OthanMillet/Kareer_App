@@ -2,7 +2,7 @@
     <div class="page-content infinite-scroll" style="white-space: normal;">
         <div class="card-header-pic" style=" margin-top: 0px !important; margin-left: auto; margin-bottom: auto;">
             <div class="card-header">
-                <a href="#" data-load="index" class="btn btn-floating btn-flat white waves-effect waves-teal waves-light home color-gray"><i class="icon f7-icons">arrow_left</i></a> Academic
+                <a href="#" data-load="index" class="btn btn-floating btn-flat white waves-effect waves-teal waves-light back color-gray"><i class="icon f7-icons">arrow_left</i></a> Academic
             </div>
             <div class="display card-content">
                 <div class='list content-block' id="display_academic">
@@ -14,7 +14,7 @@
                     <a data-cmd='add-academic' class="btn-floating btn-small teal waves-effect waves-teal waves-light" style="right: -4px; height: 50px; width: 50px; top: 15px;"><i class="icon f7-icons" style="top: 5px;">add</i></a>
                 </div>
             </div>
-            <div class='focus content-block hidden'>
+            <div class='focus content-block hidden' style="padding: 0px; margin-top: 0px !important; margin-bottom: 0px !important;">
                 <ul>
                     <li>
                         <div class="item-content row" id="year">
@@ -26,10 +26,14 @@
                         </div>
                         <div class="card row hidden" id="edit_year" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
                             <form action="" method="POST" id='form_year' style="width: 100%">
-                                <label class="col s12 active" style="top: auto; left: 0px; font-size: 12px;">Gov't Service</label>
-                                <select id="field_govt_service" name="field_govt_service">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
+                                <label class="col s12 active" style="top: auto; left: 0px; font-size: 12px;">Year Level</label>
+                                <select id="field_yearLevel" name="field_yearLevel">
+                                    <option value="Elementary">ELEMENTARY</option>
+                                    <option value="High School">HIGH SCHOOL</option>
+                                    <option value="Tech Voc">TECH VOC</option>
+                                    <option value="College">COLLEGE</option>
+                                    <option value="Masteral">MASTERAL</option>
+                                    <option value="Doctorate">DOCTORATE</option>
                                 </select>
                                 <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
                                 <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
@@ -44,6 +48,14 @@
                                <a href="#" data-cmd = "update" data-value='' data-node ='' data-prop='School' class="btn btn-floating btn-flat waves-effect waves-teal waves-light" style="top: -10px;"><i class="icon f7-icons color-gray">compose</i></a>
                             </div>
                         </div>
+                        <div class="card row hidden" id="edit_school" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                            <form action="" method="POST" id='form_school' style="width: 100%">
+                                <label class="col s12 active" style="top: auto; left: 0px; font-size: 12px;">Name of School</label>
+                                <input type='text' id="field_school" name="field_school" class="form-control col s8" style="margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                                <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                                <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                            </form>
+                        </div>
                     </li>
                     <li>
                         <div class="degree item-content row" id="educcation">
@@ -53,6 +65,14 @@
                                <a href="#" data-cmd = "update" data-value='' data-node ='' data-prop='Degree' class="btn btn-floating btn-flat waves-effect waves-teal waves-light" style="top: -10px;"><i class="icon f7-icons color-gray">compose</i></a>
                             </div>
                         </div>
+                        <div class="card row hidden" id="edit_educcation" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                            <form action="" method="POST" id='form_educcation' style="width: 100%">
+                                <label class="col s12 active" style="top: auto; left: 0px; font-size: 12px;">>Basic Education/Degree/Course</label>
+                                <input type='text' id="field_degree" name="field_degree" class="form-control col s8" style="margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                                <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                                <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                            </form>
+                        </div>
                     </li>
                     <li>
                         <div class="units item-content row" id="units">
@@ -61,6 +81,14 @@
                                <div class="item-after"><strong></strong></div>
                                <a href="#" data-cmd = "update" data-value='' data-node ='' data-prop='Units' class="btn btn-floating btn-flat waves-effect waves-teal waves-light" style="top: -10px;"><i class="icon f7-icons color-gray">compose</i></a>
                             </div>
+                        </div>
+                        <div class="card row hidden" id="edit_units" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                            <form action="" method="POST" id='form_units' style="width: 100%">
+                                <label class="col s12 active" style="top: auto; left: 0px; font-size: 12px;">Units Earned</label>
+                                <input type='number' id="field_units" name="field_units" class="form-control col s8" style="margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                                <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                                <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                            </form>
                         </div>
                     </li>
                     <li>
@@ -74,28 +102,32 @@
                                <a href="#" data-cmd = "update" data-value='' data-node ='' data-prop='Dates' class="btn btn-floating btn-flat waves-effect waves-teal waves-light" style="top: -10px;"><i class="icon f7-icons color-gray">compose</i></a>
                             </div>
                         </div>
+                        <div class="card row hidden" id="edit_attendance" style="border: solid; border-color: teal; border-width: 1px; box-shadow: none !important;">
+                            <form action="" method="POST" id='form_attendance' style="width: 100%">
+                                <label class="col s12 active" style="top: auto; left: 0px; font-size: 12px;">Period of Attendance</label>
+                                <input type='month' id="field_dateF" name="field_dateF" class="form-control col s8" style="margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                                <input type='month' id="field_dateT" name="field_dateT" class="form-control col s8" style="margin-bottom: auto; margin-left: 10px !important; width: 74% !important; height: auto;">
+                                <button class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="top: -10px;">check</i></button>
+                                <a data-cmd ="cancel" class="col s0 btn btn-flat btn-xs"><i class="icon f7-icons" style="color: black; top: -10px;">round_close</i></a>
+                            </form>
+                        </div>
                     </li>
                     <li>
-                        <div class="item-content">
+                        <div class="item-content" style="margin: auto 12px;">
                             <a data-cmd = "delete" data-load="deleteAcademic" class="col s6 btn-flat waves-effect waves-red waves-light red color-white center" style="width:100%;">Delete</a>
                             <a data-cmd = "back" class="btn-flat waves-effect waves-teal waves-light teal color-white center" style="width:100%;">Back</a>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
-    </div>
-    <div class="popup-overlay"></div>
-    <div class='popup popup-academic'>
-        <div class="page-content login-screen-content infinite-scroll" style="background: transparent;">
-            <div class="content-block">
-                <div class="close-popup">Add Academic<i class="icon f7-icons" style="width: 25px; position: absolute;right: 5%;">close_round</i></div>
+            <div class="add content-block hidden">
+                <div>Add Academic<i data-cmd="close" class="icon f7-icons" style="width: 25px; position: absolute;right: 5%;">close_round</i></div>
                 <form action="" method="POST" id='form_academic'>
                     <div class="list-block">
                         <ul>
                             <li>
                                 <div class="input-field" style='border: gray; border-width: 1px; background-color: rgba(238, 238, 238, 0.15); border-style: solid; border-radius: 15px;'>
-                                    <select id="field_yearLevel" name="field_yearLevel">
+                                    <select id="field_YearLevel" name="field_YearLevel">
                                         <option value="Elementary">ELEMENTARY</option>
                                         <option value="High School">HIGH SCHOOL</option>
                                         <option value="Tech Voc">TECH VOC</option>
@@ -108,20 +140,20 @@
 
                             <li>
                                 <div class="input-field">
-                                    <input type='text' id="field_school" name="field_school" class="form-control">
-                                    <label class="" for="field_school" style="color: black; top: -2px !important; left: 0px !important;">Name of Schools</label>
+                                    <input type='text' id="field_School" name="field_School" class="form-control">
+                                    <label class="" for="field_School" style="color: black; top: -2px !important; left: 0px !important;">Name of Schools</label>
                                 </div>
                             </li>
                             <li id="degree">
                                 <div class="input-field hidden">
-                                    <input type='text' id="field_degree" name="field_degree" class="form-control">
-                                    <label class="" for="field_degree" style="color: black; top: -2px !important; left: 0px !important;">Basic Education/Degree/Course</label>
+                                    <input type='text' id="field_Degree" name="field_Degree" class="form-control">
+                                    <label class="" for="field_Degree" style="color: black; top: -2px !important; left: 0px !important;">Basic Education/Degree/Course</label>
                                 </div>
                             </li>
                             <li id ="units">
                                 <div class="input-field hidden">
-                                    <input type='number' id="field_units" name="field_units" class="form-control">
-                                    <label class="" for="field_units" style="color: black; top: -2px !important; left: 0px !important;">Units Earned</label>
+                                    <input type='number' id="field_Units" name="field_Units" class="form-control">
+                                    <label class="" for="field_Units" style="color: black; top: -2px !important; left: 0px !important;">Units Earned</label>
                                 </div>
                             </li>
                             <li>
@@ -129,10 +161,10 @@
                                     <div class="input-field">
                                         <label class="active" style="top: auto; left: 0px; font-size: 17px; color: black;">Period of Attendance (From - To)</label>
                                         <div>
-                                            <input type='month' id="field_dateFrom"  name="field_dateFrom" class="form-control" style="width: 100%;">
+                                            <input type='month' id="field_DateFrom"  name="field_DateFrom" class="form-control" style="width: 100%;">
                                         </div>
                                         <div>
-                                            <input type='month' id="field_dateTo" name="field_dateTo" class="form-control" style="width: 100%;">
+                                            <input type='month' id="field_DateTo" name="field_DateTo" class="form-control" style="width: 100%;">
                                         </div>
                                     </div>                                            
                                 </div>
@@ -144,23 +176,22 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
-    <div class="popup popup-delete">
-        <div class="page-content login-screen-content infinite-scroll" style="background: transparent;">
-            <div class="content-block">
-                <div class="close-popup">Delete<i class="icon f7-icons" style="width: 25px; position: absolute;right: 5%;">close_round</i></div>
-                <div class="page-content" id ="deletePopup" style="overflow:hidden;">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="popup popup-update">
-        <div class="page-content login-screen-content infinite-scroll" style="background: transparent;">
-            <div class="content-block">
-                <div class="">Update Career<i class="icon f7-icons close-popup" style="width: 25px; position: absolute;right: 5%;">close_round</i></div>
-                <div class="page-content" id="updateAcad" style="overflow:hidden;">
-                </div>
+            <div class="delete content-block hidden">
+                <div>Delete Academic</div>
+                    <div class="content-block">
+                        <ul>
+                            <li>
+                                <div class="item-content center">
+                                    Are you sure?
+                                </div>
+                            </li>
+                            <li style="margin-top: 5% !important;">
+                                <a data-cmd="cancel" class='btn waves-effect waves-teal waves-light btn btn-flat grey-text white'>Cancel</a>
+                                <a data-cmd='proceed' class='waves-effect waves-teal waves-light btn btn-flat grey-text white'>Yes</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
             </div>
         </div>
     </div> 
